@@ -112,10 +112,14 @@ h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
 .note { background: #fff; padding: 24px; border: 1px solid var(--rule); }
 .note time { display: block; font: italic 500 1.25rem var(--display); color: var(--crimson); margin-bottom: 10px; }
 .notes.all { padding: 56px 0 84px; }
-.notes.all .note:first-child { grid-column: span 2; background: var(--ink); color: #fff; border-color: var(--ink); }
-.notes.all .note:first-child time { color: #ff9fb0; }
-.notes.all .note:first-child p { font-size: 1.2rem; }
-.notes.all .note:first-child a { color: #fff; }
+.tag { display: inline-block; background: var(--crimson); color: #fff; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 10px; }
+.notes.all .note.spot { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); padding: 0; background: var(--ink); color: #fff; border-color: var(--ink); }
+.note.spot img { display: block; width: 100%; height: 100%; min-height: 280px; object-fit: cover; }
+.note.spot > div { padding: 34px 36px; align-self: center; }
+.note.spot time { color: #ff9fb0; }
+.note.spot p { font-size: 1.08rem; }
+.note.spot a { color: #fff; }
+.roll .tag { margin-bottom: 6px; }
 .faces { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 20px; text-align: center; }
 .faces > li > img, .faces .ph { display: grid; width: 100%; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; object-position: center 20%; }
 .faces strong { display: block; margin-top: 10px; font-size: 0.95rem; line-height: 1.25; }
@@ -293,13 +297,15 @@ dd { margin: 0; }
   .util span { display: none; }
   .statement, .sec { padding: 52px 0; }
   .notes, .portraits, .kits, .pubs, .alumni { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .notes.all .note.spot { grid-template-columns: minmax(0, 1fr); }
+  .note.spot img { min-height: 0; aspect-ratio: 16 / 9; }
+  .note.spot > div { padding: 24px; }
   .faces { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .portraits.five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .director img { max-width: 200px; }
 }
 @media (max-width: 600px) {
   .notes, .portraits, .kits, .pubs, .alumni { grid-template-columns: minmax(0, 1fr); }
-  .notes.all .note:first-child { grid-column: auto; }
   .cards.five { grid-template-columns: minmax(0, 1fr); }
   .wrap-fig, .wrap-fig.left, .wrap-fig.right { float: none; width: 100%; margin: 0 0 22px; }
   p + .wrap-fig { margin-top: 22px; }
